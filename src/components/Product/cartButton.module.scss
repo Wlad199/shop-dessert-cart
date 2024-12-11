@@ -1,0 +1,14 @@
+.counterWrapper {
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+
+	.cartIcon {}
+
+	.cartText {
+		text-align: center;
+		line-height: 100%;
+	}
+}
