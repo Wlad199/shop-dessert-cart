@@ -3,21 +3,25 @@ import CounterButton from './CounterButton'
 import styles from './product.module.scss'
 
 
-const Product = ({ image, name, category, price, addCart, cart }) => {
+const Product = ({ image, name, category, price, addCart, quantity }) => {
 
 	return (
 		<li className={styles.product}>
 			<div className={styles.image}>
 				<img src={image.desktop} alt={name} />
 				<div className={styles.counter}>
-					{/*{isActiveCount*/}
-					{/*<CartButton />*/}
-					<CounterButton
-						addCart={addCart}
-						name={name}
-						price={price}
-						cart={cart}
-					/>
+					{!quantity ? (
+						<CartButton
+							addCart={addCart}
+							name={name} />
+					) : (
+						<CounterButton
+							addCart={addCart}
+							name={name}
+							price={price}
+							quantity={quantity}
+						/>
+					)}
 				</div>
 			</div>
 			<div className={styles.category}>{category}</div>

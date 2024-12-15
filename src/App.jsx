@@ -1,33 +1,33 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ProductList from "./components/ProductList/ProductList"
 import Cart from "./components/Cart/Cart"
 import { v4 } from 'uuid';
+import data from './data.json'
 
 
 
 const App = () => {
 
-	const [cart, setCart] = useState([])
+	const [products, setProducts] = useState(data)
 
-	const addCart = (name, price) => {
-
-		const current = cart.find(item => {
-			return item.name === name
+	useEffect(() => {
+		products.map(product => {
+			product.id = v4();
+			product.quantity = 0
 		})
+	}, [])
 
-		if (current) {
-			current.quantity = ++current.quantity
-			setCart([...cart])
-		} else {
-			setCart([...cart, {
-				id: v4(),
-				name,
-				price,
-				quantity: 1
-			}])
-		}
+	const addCart = (name) => {
+		setProducts(products.map(item => {
+			if (item.name !== name) {
+				return item
+			}
+			return {
+				...item,
+				quantity: ++item.quantity
+			}
+		}))
 	}
-	//console.log(cart)
 
 	return (
 		<div className="container">
@@ -35,12 +35,12 @@ const App = () => {
 				<div className="products">
 					<h1>Deserts</h1>
 					<ProductList
+						products={products}
 						addCart={addCart}
-						cart={cart}
 					/>
 				</div>
 				<div className="cart">
-					<Cart cart={cart} />
+					<Cart products={products} />
 				</div>
 			</div>
 		</div>

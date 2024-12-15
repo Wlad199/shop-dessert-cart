@@ -1,15 +1,8 @@
-import { useState } from 'react'
-import data from '../../data.json'
 import styles from './productList.module.scss'
 import Product from '../Product/Product'
 
+const ProductList = ({ addCart, products }) => {
 
-const ProductList = ({ addCart, cart }) => {
-
-
-	const [products, setProducts] = useState(data)
-
-	console.log(products)
 
 	return (
 		<ul className={styles.productList}>
@@ -18,7 +11,6 @@ const ProductList = ({ addCart, cart }) => {
 					key={index}
 					{...product}
 					addCart={addCart}
-					cart={cart}
 				/>
 			))}
 		</ul>
