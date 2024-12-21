@@ -1,12 +1,17 @@
 body {
 	background-color: #fcf8f5;
 	margin: 40px 0;
+	position: relative;
 }
 
 .container {
 	max-width: 1300px;
 	margin: 0 auto;
 	padding: 0 15px;
+}
+
+.lock {
+	overflow: hidden;
 }
 
 .wrapper {
@@ -25,4 +30,15 @@ h1 {
 
 .cart {
 	flex: 0 0 400px;
+}
+
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 10;
+	background-color: rgba(#000, 0.7);
+	overflow: auto;
 }

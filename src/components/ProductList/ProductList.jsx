@@ -1,8 +1,10 @@
 import styles from './productList.module.scss'
 import Product from '../Product/Product'
+import { useSelector } from "react-redux";
 
-const ProductList = ({ addCart, products }) => {
+const ProductList = () => {
 
+	const products = useSelector(state => state.goods.data)
 
 	return (
 		<ul className={styles.productList}>
@@ -10,7 +12,6 @@ const ProductList = ({ addCart, products }) => {
 				<Product
 					key={index}
 					{...product}
-					addCart={addCart}
 				/>
 			))}
 		</ul>

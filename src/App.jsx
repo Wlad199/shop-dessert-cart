@@ -1,47 +1,32 @@
-import { useEffect, useState } from "react"
 import ProductList from "./components/ProductList/ProductList"
 import Cart from "./components/Cart/Cart"
-import { v4 } from 'uuid';
-import data from './data.json'
-
-
+import Comfirm from "./components/Confirm/Comfirm";
+import { useSelector } from "react-redux";
 
 const App = () => {
 
-	const [products, setProducts] = useState(data)
-
-	useEffect(() => {
-		products.map(product => {
-			product.id = v4();
-			product.quantity = 0
-		})
-	}, [])
-
-	const addCart = (name) => {
-		setProducts(products.map(item => {
-			if (item.name !== name) {
-				return item
-			}
-			return {
-				...item,
-				quantity: ++item.quantity
-			}
-		}))
-	}
+	const popup = useSelector(state => state.popup.show)
 
 	return (
 		<div className="container">
 			<div className="wrapper">
+
 				<div className="products">
 					<h1>Deserts</h1>
-					<ProductList
-						products={products}
-						addCart={addCart}
-					/>
+					<ProductList />
 				</div>
+
 				<div className="cart">
-					<Cart products={products} />
+					<Cart reload={false} />
 				</div>
+
+				{popup ? (
+					<div className="popup">
+						<Comfirm />
+					</div>
+				) : ''
+				}
+
 			</div>
 		</div>
 	)

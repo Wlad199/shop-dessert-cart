@@ -1,9 +1,9 @@
+import { useDispatch } from 'react-redux'
 import CartButton from './CartButton'
 import CounterButton from './CounterButton'
 import styles from './product.module.scss'
 
-
-const Product = ({ image, name, category, price, addCart, quantity }) => {
+const Product = ({ image, name, category, price, quantity }) => {
 
 	return (
 		<li className={styles.product}>
@@ -12,11 +12,10 @@ const Product = ({ image, name, category, price, addCart, quantity }) => {
 				<div className={styles.counter}>
 					{!quantity ? (
 						<CartButton
-							addCart={addCart}
-							name={name} />
+							name={name}
+						/>
 					) : (
 						<CounterButton
-							addCart={addCart}
 							name={name}
 							price={price}
 							quantity={quantity}

@@ -2,6 +2,7 @@
 	background-color: #fff;
 	border-radius: 20px;
 	padding: 25px 15px;
+	user-select: none;
 
 	@media (max-width: 450px) {
 		padding: 20px 0;

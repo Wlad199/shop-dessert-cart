@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './scss/null.scss'
 import './scss/style.scss'
+import { Provider } from 'react-redux'
+import store from './store'
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
 root.render(
-	<App />
+	<Provider store={store}>
+		<App />
+	</Provider>
 )
