@@ -12,7 +12,6 @@ const App = () => {
 			<div className="wrapper">
 
 				<div className="products">
-					<h1>Deserts</h1>
 					<ProductList />
 				</div>
 

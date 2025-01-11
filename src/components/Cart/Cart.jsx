@@ -6,8 +6,6 @@ import { showPopup } from '../popupSlice'
 
 const Cart = ({ reload }) => {
 
-	console.log(reload)
-
 	const dispatch = useDispatch()
 	const products = useSelector(state => state.goods.data)
 
